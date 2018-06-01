@@ -1,32 +1,17 @@
 import React, { PureComponent } from 'react';
 import { View, Text, Button } from 'react-native';
 
-class Step extends PureComponent {
-  state = {};
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        {this.props.children}
-        <Button
-          title="Prev"
-          disabled={this.props.currentIndex === 0}
-          onPress={this.props.prevStep}
-        />
-        <Button
-          title="Next"
-          disabled={this.props.isLast}
-          onPress={this.props.nextStep}
-        />
-      </View>
-    );
-  }
-}
+import Step from './Step';
 
 class Wizard extends PureComponent {
   static Step = props => <Step {...props} />;
 
   state = {
     index: 0,
+
+    values: {
+      ...this.props.initialValues,
+    },
   };
 
   _nextStep = () => {
@@ -45,7 +30,17 @@ class Wizard extends PureComponent {
     }
   };
 
+  _onChangeValue = (name, value) => {
+    this.setState(prevState => ({
+      values: {
+        ...prevState.values,
+        [name]: value,
+      },
+    }));
+  };
+
   render() {
+    console.log('values', this.state);
     return (
       <View style={{ flex: 1 }}>
         {React.Children.map(this.props.children, (el, index) => {
@@ -55,6 +50,8 @@ class Wizard extends PureComponent {
               nextStep: this._nextStep,
               prevStep: this._prevStep,
               isLast: this.state.index === this.props.children.length - 1,
+              onChangeValue: this._onChangeValue,
+              values: this.state.values,
             });
           }
 
