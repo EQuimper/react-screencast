@@ -10,3 +10,8 @@
 - Add initialValues to the Wizard state
 - Design input -> dont gonna look awesome :)
 - Break up a bit the component
+
+## Part 3
+
+- Cleanup Code
+- Remove boilerplate with array of forms
