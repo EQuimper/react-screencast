@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Alert } from 'react-native';
 
 import Step from './Step';
 
@@ -39,6 +39,10 @@ class Wizard extends PureComponent {
     }));
   };
 
+  _onSubmit = () => {
+    Alert.alert(JSON.stringify(this.state.values));
+  };
+
   render() {
     console.log('values', this.state);
     return (
@@ -52,6 +56,7 @@ class Wizard extends PureComponent {
               isLast: this.state.index === this.props.children.length - 1,
               onChangeValue: this._onChangeValue,
               values: this.state.values,
+              onSubmit: this._onSubmit,
             });
           }
 

@@ -4,6 +4,21 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Wizard from './src/components/Wizard';
 import Input from './src/components/Input';
 
+const forms = [
+  {
+    placeholder: 'Username here...',
+    name: 'username',
+  },
+  {
+    placeholder: 'Email here...',
+    name: 'email',
+  },
+  {
+    placeholder: 'Avatar here...',
+    name: 'avatar',
+  },
+];
+
 export default class App extends React.Component {
   render() {
     return (
@@ -15,42 +30,20 @@ export default class App extends React.Component {
             avatar: '',
           }}
         >
-          <Wizard.Step>
-            {({ onChangeValue, values }) => (
-              <View style={styles.container}>
-                <Input
-                  onChangeValue={onChangeValue}
-                  placeholder="Username here..."
-                  value={values.username}
-                  name="username"
-                />
-              </View>
-            )}
-          </Wizard.Step>
-          <Wizard.Step>
-            {({ onChangeValue, values }) => (
-              <View style={styles.container}>
-                <Input
-                  onChangeValue={onChangeValue}
-                  placeholder="Email here..."
-                  value={values.email}
-                  name="email"
-                />
-              </View>
-            )}
-          </Wizard.Step>
-          <Wizard.Step>
-            {({ onChangeValue, values }) => (
-              <View style={styles.container}>
-                <Input
-                  onChangeValue={onChangeValue}
-                  placeholder="Avatar here..."
-                  value={values.avatar}
-                  name="avatar"
-                />
-              </View>
-            )}
-          </Wizard.Step>
+          {forms.map(el => (
+            <Wizard.Step key={el.name}>
+              {({ onChangeValue, values }) => (
+                <View style={styles.container}>
+                  <Input
+                    onChangeValue={onChangeValue}
+                    placeholder={el.placeholder}
+                    value={values[el.name]}
+                    name={el.name}
+                  />
+                </View>
+              )}
+            </Wizard.Step>
+          ))}
         </Wizard>
       </View>
     );

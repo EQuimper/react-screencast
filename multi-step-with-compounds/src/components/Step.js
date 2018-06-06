@@ -16,11 +16,11 @@ class Step extends PureComponent {
             disabled={this.props.currentIndex === 0}
             onPress={this.props.prevStep}
           />
-          <Button
-            title="Next"
-            disabled={this.props.isLast}
-            onPress={this.props.nextStep}
-          />
+          {this.props.isLast ? (
+            <Button title="Submit" onPress={this.props.onSubmit} />
+          ) : (
+            <Button title="Next" onPress={this.props.nextStep} />
+          )}
         </View>
       </View>
     );
