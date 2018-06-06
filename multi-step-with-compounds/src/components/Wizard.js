@@ -4,7 +4,7 @@ import { View, Text, Button } from 'react-native';
 import Step from './Step';
 
 class Wizard extends PureComponent {
-  static Step = props => <Step {...props} />;
+  static Step = Step;
 
   state = {
     index: 0,
