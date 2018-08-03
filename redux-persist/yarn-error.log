@@ -1,0 +1,51 @@
+Arguments: 
+  /Users/equimper/.nvm/versions/node/v9.10.1/bin/node /usr/local/Cellar/yarn/1.9.2/libexec/bin/yarn.js add -D redux-logger redux-devtool-extension
+
+PATH: 
+  /usr/local/opt/sqlite/bin:/Users/equimper/development/flutter/bin:/Users/equimper/.nvm/versions/node/v9.10.1/bin:/usr/local/share/python:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin:/Users/equimper/.vim/plugged/fzf/bin:/Users/equimper/Library/Android/sdk/tools:/Users/equimper/Library/Android/sdk/platform-tools:/usr/local/opt/go/libexec/bin:/Users/equimper/go/bin
+
+Yarn version: 
+  1.9.2
+
+Node version: 
+  9.10.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: http://registry.npmjs.org/redux-devtool-extension: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.9.2/libexec/lib/cli.js:64150:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.9.2/libexec/lib/cli.js:137416:22)
+      at Request.emit (events.js:180:13)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.9.2/libexec/lib/cli.js:138388:10)
+      at Request.emit (events.js:180:13)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.9.2/libexec/lib/cli.js:138310:12)
+      at Object.onceWrapper (events.js:272:13)
+      at IncomingMessage.emit (events.js:185:15)
+      at endReadableNT (_stream_readable.js:1106:12)
+      at process._tickCallback (internal/process/next_tick.js:114:19)
+
+npm manifest: 
+  {
+    "name": "empty-project-template",
+    "main": "node_modules/expo/AppEntry.js",
+    "private": true,
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "expo": "^29.0.0",
+      "react": "16.3.1",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
