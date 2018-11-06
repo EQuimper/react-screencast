@@ -16,14 +16,15 @@ class Input extends PureComponent {
   };
 
   render() {
-    const { label, error, ...rest } = this.props;
+    const { forwardedRef, error, label, ...rest } = this.props;
     return (
       <View style={styles.root}>
         <FormLabel>{label}</FormLabel>
         <FormInput
-          onChangeText={this._handleChange}
           onBlur={this._handleTouch}
+          onChangeText={this._handleChange}
           placeholder={label}
+          ref={forwardedRef}
           {...rest}
         />
         {error && <FormValidationMessage>{error}</FormValidationMessage>}
@@ -39,4 +40,21 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Input;
+export default React.forwardRef((props, ref) => <Input forwardedRef={ref} {...props} />)
+
+/**
+Just for demistration purposes I've included a simplified version of the above using the ref fowarding
+*/
+const SimplifiedInput = React.forwardRef(({ error, label, name, onChange, onTouch, ...rest }, ref) =>
+  <View style={styles.root}>
+    <FormLabel>{label}</FormLabel>
+    <FormInput
+      onBlur={() => onTouch(name)}
+      onChangeText={value => onChange(name, value)}
+      placeholder={label}
+      ref={ref}
+      {...rest}
+    />
+    {error && <FormValidationMessage>{error}</FormValidationMessage>}
+  </View>
+)
